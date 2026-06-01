@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --orange: #E8570A;
+  --orange-light: #FF6B1A;
+  --pink: #C2185B;
+  --pink-light: #E91E8C;
+  --cream: #f5f0eb;
+  --dark: #0d0d0d;
+  --dark-card: #1a1a1a;
+  --dark-card-2: #222222;
+  --border: rgba(255, 255, 255, 0.1);
+  --text-muted: rgba(245, 240, 235, 0.6);
+  --focus-ring: 0 0 0 3px rgba(232, 87, 10, 0.6);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0d0d0d;
+  color: #f5f0eb;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── SCROLL TICKER ── */
+@keyframes infiniteScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.scroll-track {
+  display: flex;
+  gap: 1.5px;
+  width: max-content;
+  animation: infiniteScroll 38s linear infinite;
+  will-change: transform;
+}
+
+.scroll-ticker:hover .scroll-track {
+  animation-play-state: paused;
+}
+
+.scroll-panel {
+  width: 340px;
+  height: 340px;
+  flex-shrink: 0;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.scroll-panel:hover {
+  transform: scale(1.04);
+  filter: brightness(1.1);
+}
+
+/* ── REVEAL ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal-fade {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-fade.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── STAT COUNTER ANIMATION ── */
+.stat-card {
+  opacity: 0;
+  transform: translateY(24px) scale(0.97);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.counter-group.in-view .stat-card:nth-child(1) { opacity: 1; transform: translateY(0) scale(1); transition-delay: 0s; }
+.counter-group.in-view .stat-card:nth-child(2) { opacity: 1; transform: translateY(0) scale(1); transition-delay: 0.1s; }
+.counter-group.in-view .stat-card:nth-child(3) { opacity: 1; transform: translateY(0) scale(1); transition-delay: 0.2s; }
+.counter-group.in-view .stat-card:nth-child(4) { opacity: 1; transform: translateY(0) scale(1); transition-delay: 0.3s; }
+
+/* ── NEWS CARD HOVER ── */
+.news-card-link {
+  transition: border-color 0.2s, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.news-card-link:hover {
+  border-color: #E8570A !important;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(232, 87, 10, 0.15);
+}
+
+/* ── FOCUS RING ── */
+a:focus-visible,
+button:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: 4px;
+}
+
+/* ── HERO GRID ── */
+@media (min-width: 900px) {
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+  }
+}
+
+/* ── ORIGIN GRID ── */
+@media (min-width: 900px) {
+  .origin-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.8fr;
+    gap: 5rem;
+    align-items: start;
+  }
+}
+
+/* ── DRAWER TRANSITION ── */
+.nav-drawer {
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}

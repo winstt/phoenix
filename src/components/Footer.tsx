@@ -1,0 +1,209 @@
+import { Instagram, Facebook, Youtube, Twitter, Linkedin } from 'lucide-react'
+import { siteContent } from '../data/content'
+
+const { footer } = siteContent
+
+// Bluesky icon (not in lucide-react)
+function BlueSkyIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C3.566 1.6 1.5 1.028 1.5 4.43c0 .661.375 5.551.6 6.34.8 2.685 3.72 3.558 6.32 3.193-.074.016-.149.034-.222.055-2.562.717-5.126 2.23-2.444 5.45 3.046 3.628 7.53-1.22 8.246-3.438.716 2.217 5.2 7.066 8.246 3.438 2.682-3.22.118-4.733-2.444-5.45-.073-.021-.148-.039-.222-.055 2.6.365 5.52-.508 6.32-3.193.225-.789.6-5.679.6-6.34 0-3.402-2.066-2.83-3.702-1.625C16.046 4.747 13.087 8.686 12 10.8Z" />
+    </svg>
+  )
+}
+
+const socialIconMap: Record<string, React.ReactNode> = {
+  instagram: <Instagram size={18} />,
+  facebook: <Facebook size={18} />,
+  youtube: <Youtube size={18} />,
+  x: <Twitter size={18} />,
+  linkedin: <Linkedin size={18} />,
+  bluesky: <BlueSkyIcon size={18} />,
+}
+
+export default function Footer() {
+  return (
+    <footer
+      role="contentinfo"
+      style={{
+        background: '#080808',
+        borderTop: '1px solid rgba(255,255,255,0.1)',
+        padding: '4rem 2.5rem 0',
+      }}
+    >
+      {/* Top grid */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1.5fr 1fr 1fr 1fr',
+          gap: '3rem',
+          paddingBottom: '3rem',
+          borderBottom: '1px solid rgba(255,255,255,0.1)',
+        }}
+      >
+        {/* Brand */}
+        <div>
+          {/* Logo */}
+          <svg
+            width="140"
+            height="42"
+            viewBox="0 0 160 48"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-label="The Phoenix Community Trust"
+            style={{ marginBottom: '1rem', display: 'block' }}
+          >
+            <path d="M14 40 C14 40 6 30 10 20 C12 14 18 12 18 12 C18 12 16 20 20 24 C22 26 26 26 26 26 C26 26 22 30 22 36 C22 38 24 40 24 40 Z" fill="#E8570A" />
+            <path d="M24 40 C24 40 28 34 26 28 C30 30 34 28 34 24 C36 30 32 38 28 40 Z" fill="#C2185B" />
+            <text x="42" y="20" fontFamily="system-ui, sans-serif" fontSize="10" fontWeight="800" fill="#f5f0eb" letterSpacing="0.12em">THE PHOENIX</text>
+            <text x="42" y="33" fontFamily="system-ui, sans-serif" fontSize="10" fontWeight="400" fill="rgba(245,240,235,0.65)" letterSpacing="0.08em">COMMUNITY TRUST</text>
+          </svg>
+          <p style={{ fontSize: '13px', color: 'rgba(245,240,235,0.6)', lineHeight: '1.7', maxWidth: '240px', margin: '1rem 0' }}>
+            {footer.tagline}
+          </p>
+        </div>
+
+        {/* Organisation column */}
+        <div>
+          <h4
+            className="font-bold uppercase mb-5"
+            style={{ fontSize: '11px', letterSpacing: '0.1em', color: '#f5f0eb' }}
+          >
+            {footer.columns.organisation.heading}
+          </h4>
+          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+            {footer.columns.organisation.links.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  className="no-underline transition-colors"
+                  style={{ fontSize: '13px', color: 'rgba(245,240,235,0.6)' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = '#E8570A')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(245,240,235,0.6)')}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Work column */}
+        <div>
+          <h4
+            className="font-bold uppercase mb-5"
+            style={{ fontSize: '11px', letterSpacing: '0.1em', color: '#f5f0eb' }}
+          >
+            {footer.columns.work.heading}
+          </h4>
+          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+            {footer.columns.work.links.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  className="no-underline transition-colors"
+                  style={{ fontSize: '13px', color: 'rgba(245,240,235,0.6)' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = '#E8570A')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(245,240,235,0.6)')}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Get in touch column */}
+        <div>
+          <h4
+            className="font-bold uppercase mb-5"
+            style={{ fontSize: '11px', letterSpacing: '0.1em', color: '#f5f0eb' }}
+          >
+            {footer.getInTouch.heading}
+          </h4>
+          <address style={{ fontStyle: 'normal' }}>
+            <a
+              href={`mailto:${footer.getInTouch.email}`}
+              className="no-underline transition-colors"
+              style={{ fontSize: '13px', color: '#E8570A' }}
+              onMouseEnter={(e) => (e.currentTarget.style.textDecoration = 'underline')}
+              onMouseLeave={(e) => (e.currentTarget.style.textDecoration = 'none')}
+            >
+              {footer.getInTouch.email}
+            </a>
+          </address>
+
+          {/* Social icons */}
+          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '1rem' }}>
+            {footer.getInTouch.social.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                aria-label={s.label}
+                className="no-underline transition-all flex items-center justify-center"
+                style={{
+                  width: '36px',
+                  height: '36px',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  borderRadius: '6px',
+                  color: 'rgba(245,240,235,0.6)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = '#E8570A'
+                  e.currentTarget.style.color = '#E8570A'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'
+                  e.currentTarget.style.color = 'rgba(245,240,235,0.6)'
+                }}
+              >
+                {socialIconMap[s.icon] ?? <span style={{ fontSize: '11px' }}>{s.label[0]}</span>}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom row */}
+      <div
+        style={{
+          padding: '1.25rem 0',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '1rem',
+        }}
+      >
+        {/* Legal links */}
+        <nav aria-label="Legal and policy links" style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
+          {footer.legal.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="no-underline transition-colors"
+              style={{ fontSize: '12px', color: 'rgba(245,240,235,0.6)' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#f5f0eb')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(245,240,235,0.6)')}
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        {/* Copyright + address */}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '4px', textAlign: 'right' }}>
+          <span style={{ fontSize: '11px', color: 'rgba(245,240,235,0.3)' }}>
+            Registered address: {footer.address}
+          </span>
+          <span style={{ fontSize: '11px', color: 'rgba(245,240,235,0.3)' }}>
+            {footer.copyright}
+          </span>
+          <span style={{ fontSize: '11px', color: 'rgba(245,240,235,0.25)' }}>
+            Registered charity number: {footer.registeredCharityNumber}&nbsp;|&nbsp;Company number: {footer.companyNumber}
+          </span>
+        </div>
+      </div>
+    </footer>
+  )
+}
