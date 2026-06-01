@@ -44,20 +44,11 @@ export default function Footer() {
         {/* Brand */}
         <div>
           {/* Logo */}
-          <svg
-            width="140"
-            height="42"
-            viewBox="0 0 160 48"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-label="The Phoenix Community Trust"
-            style={{ marginBottom: '1rem', display: 'block' }}
-          >
-            <path d="M14 40 C14 40 6 30 10 20 C12 14 18 12 18 12 C18 12 16 20 20 24 C22 26 26 26 26 26 C26 26 22 30 22 36 C22 38 24 40 24 40 Z" fill="#E8570A" />
-            <path d="M24 40 C24 40 28 34 26 28 C30 30 34 28 34 24 C36 30 32 38 28 40 Z" fill="#C2185B" />
-            <text x="42" y="20" fontFamily="system-ui, sans-serif" fontSize="10" fontWeight="800" fill="#f5f0eb" letterSpacing="0.12em">THE PHOENIX</text>
-            <text x="42" y="33" fontFamily="system-ui, sans-serif" fontSize="10" fontWeight="400" fill="rgba(245,240,235,0.65)" letterSpacing="0.08em">COMMUNITY TRUST</text>
-          </svg>
+          <img
+            src="https://newphx.karrota.wtf/wp-content/uploads/2026/05/ThePhoenix-LogoPNG-1.png"
+            alt="The Phoenix Community Trust"
+            style={{ height: '110px', width: 'auto', display: 'block', marginBottom: '0.5rem' }}
+          />
           <p style={{ fontSize: '13px', color: 'rgba(245,240,235,0.6)', lineHeight: '1.7', maxWidth: '240px', margin: '1rem 0' }}>
             {footer.tagline}
           </p>
